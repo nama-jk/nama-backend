@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { SHOPIFY_API_PASSWORD, SHOPIFY_STORE } = process.env;
+  const { SHOPIFY_ADMIN_API_TOKEN, SHOPIFY_STORE } = process.env;
   const { customerId, tag } = req.body;
 
   const mutation = `
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       { query: mutation },
       {
         headers: {
-          'X-Shopify-Access-Token': SHOPIFY_API_PASSWORD,
+          'X-Shopify-Access-Token': SHOPIFY_ADMIN_API_TOKEN,
           'Content-Type': 'application/json',
         },
       }
